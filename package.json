@@ -1,0 +1,21 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "a basic app",
+  "main": "index.js",
+ 
+  "scripts": {
+    "start": "node index.js"
+  },
+ 
+  "keywords": [
+    "node",
+    "chai"
+  ],
+  "author": "jaydip dangar",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0"
+  }
+}

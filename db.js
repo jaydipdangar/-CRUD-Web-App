@@ -1,11 +1,11 @@
-const mangose = require('mongoose');
+const mongose = require('mongoose');
 
 
 require('dotenv').config();
 const MONGO_URL = process.env.MONGO_URL;
-mangose.connect(MONGO_URL);
+mongose.connect(MONGO_URL);
 
-const db = mangose.connection;
+const db = mongose.connection;
 // if 'connect ' and 'error' is string then how can db reader know that mangobd server is on ro error ?
     
 

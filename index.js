@@ -16,6 +16,7 @@ app.get('/', (req, res) => {
     res.send('jaydip ahir')
 })
 
+    // get all data in array object form 
 app.get('/person', async (req, res) => {
     try {
         const data = await person.find();
@@ -29,6 +30,7 @@ app.get('/person', async (req, res) => {
     }
 })
 
+    // for insert data 
 app.post('/person', async (req, res) => {
 
     try {
@@ -49,15 +51,16 @@ app.post('/person', async (req, res) => {
 
     }
 })
-
-app.put('/person/:id', (req, res) => {
+    
+    //if you want to update  data by id
+app.put('/person/:id', async(req, res) => {
 
 
     try {
         const upid = req.params.id;
         const updatedata = req.body;
 
-        const update = person.findByIdAndUpdate(upid, updatedata, { new: true });
+        const update = await person.findByIdAndUpdate(upid, updatedata, { new: true });
 
         console.log('update compale');
         res.status(200).json({ message: 'data updated ' });
@@ -73,6 +76,9 @@ app.put('/person/:id', (req, res) => {
 
 
 })
+
+    //if you want to clear all data
+
 app.delete('/person/all', async(req, res) => {
 
 
@@ -97,8 +103,8 @@ app.delete('/person/all', async(req, res) => {
 
 })
 
-
-app.delete('/person/:id', async(req, res) => {
+    //if you want to delete data by id
+app.delete('/person/id/:id', async(req, res) => {
 
 
 
@@ -123,6 +129,32 @@ app.delete('/person/:id', async(req, res) => {
 
 })
 
+//if you want to  delete data by name
+
+app.delete('/person/name/:name', async(req, res) => {
+
+
+
+    try {
+        const deid = req.params.name;
+        const deletdata = await person.findOneAndDelete({ name : deid });
+
+        if (!deletdata) {
+            return res.status(404).json({ error: 'person not found' })
+        }
+
+        console.log('data deleted ')
+        res.status(200).json({ message: 'data  deleted ' })
+    }
+
+    catch (err) {
+
+        console.log(err);
+        res.status(500).json({ error: 'error found' })
+    }
+
+
+})
 
 
 app.listen(PORT, () => {

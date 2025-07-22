@@ -6,30 +6,16 @@ name : {
     type: String,
     required : true
 },
-age : {
-    type: Number,
-    required : true
-},
-role : {
-    type: String,
-    rname : ['cheif' , 'owner', 'security'],
-    required : true
-},
-mobileno : {
-    type: Number,
-    required : true
-},
-email : {
+username : {
     type : String ,
     required : true ,
     unique :true 
 },
-address : {
-    type : String ,
-},
-salary : {
-    type : Number ,
-    required : true
+password : 
+{
+    typr : Number ,
+    required : true ,
+
 }
 
 
